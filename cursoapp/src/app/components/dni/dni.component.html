@@ -1,0 +1,9 @@
+<div>
+  {{titulo}}
+  <ion-item>
+    <ion-label>NUMÉRO DE DNI</ion-label>
+    <ion-input type="number" [(ngModel)]="numero" placeholder="000"></ion-input>
+  </ion-item>
+  <ion-button (click)="calcularLetra()" expand="block">CALCULA LETRA</ion-button>
+<div *ngIf="letra"> SU LETRA ES {{letra}}</div>
+</div>
