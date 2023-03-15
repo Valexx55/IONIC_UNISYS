@@ -14,6 +14,8 @@ export class DniComponent  implements OnInit, OnDestroy {
   //letra:string;
   numero:number|null;
   titulo:string;
+  lista_dnis:Array<Number>;
+  lista_result:Array<Number>;
 
    static readonly SECUENCIA_LETRAS_DNI:string="TRWAGMYFPDXBNJZSQVHLCKE";
 
@@ -23,6 +25,8 @@ export class DniComponent  implements OnInit, OnDestroy {
    // this.letra='';
     this.numero=2;
     console.log('en el constructor');
+    this.lista_dnis = new Array<Number>();
+    this.lista_result = new Array<Number>();
   }
   ngOnDestroy(): void {
     //PARA LIBERAR RECURSOS
@@ -50,14 +54,25 @@ export class DniComponent  implements OnInit, OnDestroy {
       console.log(`VALOR INTRODUCIDO ${this.numero}`);
       let resto: number = this.numero%DniComponent.SECUENCIA_LETRAS_DNI.length;
       this.letra = DniComponent.SECUENCIA_LETRAS_DNI.charAt(resto);
+      this.lista_dnis.push(this.numero);
+      //mostrar
+      this.lista_dnis.forEach(itemdni => {console.log(itemdni);});
+      //vamos a filtrar sólo los dnis mayores que 10
+      //this.lista_dnis.filter
+      this.lista_result = this.lista_dnis.filter(dni => dni > 10);
+      //this.lista_dnis.sort();//ordena ASCII
+      this.lista_dnis.sort(
+        (a:Number, b:Number):number => {
+          //paso de Number a number para que me deje restar
+          let an: number = <number>a;//2 formas alternativas
+          let bn: number = b as number;//de casting
+          let resultado:number = an-bn;
+          return resultado;
+          //  return (a-b);
+        }
+      );
     }
-    //TODO: HACIENDO UNA LISTA DE DNIS CON CADA DNI INTRODUCIDO
-    //REPASO DE PASOS PARA CREAR E INTEGRAR UN NUEVO COMPONENTE
-    //MOSTRAR 
-    //MÁXIMO
-    //MÍNIMO
-    //FILTRAR
-    //MAP TRANSFORMAR
+    //FILTER, FOREACH, MAP
 
   }
 

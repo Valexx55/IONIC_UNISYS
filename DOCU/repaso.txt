@@ -1,0 +1,6 @@
+- MÓDULOS 2 app.module.ts (inicial) importa el approtuingmodule (cargo) home.module.ts 
+- CREO UN COMPONENTE (VISTA/ETIQUETA)
+    - ionic g 
+    - registrar en un módulo (home.module)
+    - configurar en el approtuingmodule la ruta a ese compoenente (array de rutas) PATH-COMPONENT
+    - para crear un enlace a esa ruta, uso la directiva routerLink

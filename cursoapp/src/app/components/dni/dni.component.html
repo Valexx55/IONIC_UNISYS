@@ -6,4 +6,15 @@
   </ion-item>
   <ion-button (click)="calcularLetra()" expand="block">CALCULA LETRA</ion-button>
 <div *ngIf="letra"> SU LETRA ES {{letra}}</div>
+<ion-list *ngIf="lista_dnis && lista_dnis.length>0" [inset]="false" lines="inset">
+  <ion-item *ngFor="let ndni of lista_dnis">
+    <ion-label>{{ndni}}</ion-label>
+  </ion-item>
+</ion-list>
+<ion-label>DNI mayor que 10</ion-label>
+<ion-list *ngIf="lista_result && lista_result.length>0">
+  <ion-item *ngFor="let resultado of lista_result">
+    <ion-label>{{resultado}}</ion-label>
+  </ion-item>
+</ion-list>
 </div>

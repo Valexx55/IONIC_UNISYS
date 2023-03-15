@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { DniComponent } from '../components/dni/dni.component';
+import { AlumnoComponent } from '../components/alumno/alumno.component';
 
 
 @NgModule({
@@ -16,6 +17,6 @@ import { DniComponent } from '../components/dni/dni.component';
     HomePageRoutingModule
   ],
   //al crear el compoente, hay que registrarlo en un módulo
-  declarations: [HomePage, DniComponent]
+  declarations: [HomePage, DniComponent, AlumnoComponent]
 })
 export class HomePageModule {}

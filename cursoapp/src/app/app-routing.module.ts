@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AlumnoComponent } from './components/alumno/alumno.component';
 import { DniComponent } from './components/dni/dni.component';
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'dni',//"url"
     component: DniComponent
+  },
+  {
+    path: 'alumno',//"url"
+    component: AlumnoComponent
   }
 ];
 
