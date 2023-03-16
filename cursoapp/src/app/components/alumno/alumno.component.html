@@ -1,3 +1,17 @@
-<p>
-  alumno works!
-</p>
+<ion-content [scrollEvents]="true">
+<ion-list *ngIf="lista_alumno_rx">
+  <ion-item *ngFor="let alumno of lista_alumno_rx">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{alumno.nombre}}</ion-card-title>
+      <ion-card-subtitle>{{alumno.edad}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{alumno.creadoEn | date:'medium' }}
+
+    </ion-card-content>
+  </ion-card>
+</ion-item>
+</ion-list>
+</ion-content>

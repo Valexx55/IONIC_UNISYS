@@ -4,3 +4,18 @@
     - registrar en un módulo (home.module)
     - configurar en el approtuingmodule la ruta a ese compoenente (array de rutas) PATH-COMPONENT
     - para crear un enlace a esa ruta, uso la directiva routerLink
+COMANDOS PARA EXPORTACIÓN NATIVA
+
+
+1) ionic capacitor sync android
+    
+    añade las dependencias de Android (Capacitor)
+    genera la versión android en la subcarpeta correpodiente
+
+    actualizar
+
+
+2) ionic capacitor open android
+
+    abre la versión nativa generada en el paso anterior
+    en el entorno nativo (Android Studio)
