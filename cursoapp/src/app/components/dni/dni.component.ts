@@ -1,4 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dni',
@@ -19,7 +22,9 @@ export class DniComponent  implements OnInit, OnDestroy {
 
    static readonly SECUENCIA_LETRAS_DNI:string="TRWAGMYFPDXBNJZSQVHLCKE";
 
-  constructor() { 
+  suscriptor_hacia_atras!: Subscription;
+
+  constructor(private platform:Platform, private router:Router) { 
     //PARA INICIALIZAR PROPIEDADES
     this.titulo='CALCULO DE LA LETRA DE SU DNI';
    // this.letra='';
@@ -43,6 +48,26 @@ export class DniComponent  implements OnInit, OnDestroy {
   ionViewWillEnter()
   {
     console.log('ionViewWillEnter()');
+  }
+
+  ionViewDidEnter()
+  {
+    //me suscribo al botón hacia atrás físico
+    console.log('ionViewDidEnter');
+    this.suscriptor_hacia_atras = this.platform.backButton.subscribe(() => {
+      //console.log("TOCADO EL BOTÓN HACIA ATRÁS");
+      //alert("BOTON HACIA ATRÁS TOCADO " + window.location.href);
+      this.router.navigateByUrl('/home');
+      
+    });
+  }
+
+  ionViewWillLeave ()
+  {
+    //me desuscribo al botón hacia atrás físico
+    console.log('ionViewWillLeave');
+    alert("SALIENDO DEL COMPONENTE");
+    this.suscriptor_hacia_atras.unsubscribe();
   }
 
   calcularLetra()

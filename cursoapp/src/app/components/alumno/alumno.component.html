@@ -1,3 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-button>
+        <ion-icon slot="start" name="star"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> LISTADO DE ALUMNOS </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [scrollEvents]="true">
 <ion-list *ngIf="lista_alumno_rx">
   <ion-item *ngFor="let alumno of lista_alumno_rx">

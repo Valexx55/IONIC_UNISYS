@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, ToastController } from '@ionic/angular';
-import { Observer } from 'rxjs';
+import { Router } from '@angular/router';
+import { LoadingController, Platform, ToastController } from '@ionic/angular';
+import { Observer, Subscription } from 'rxjs';
 import { Alumno } from 'src/app/model/alumno';
 import { AlumnoService } from 'src/app/services/alumno.service';
 
@@ -12,6 +13,8 @@ import { AlumnoService } from 'src/app/services/alumno.service';
 export class AlumnoComponent  implements OnInit {
 
   lista_alumno_rx!:Array<Alumno>;
+
+  suscriptor_hacia_atras!: Subscription;
 
   observerGetAlumnos : Observer<Array<Alumno>> = {
     next: (lista_alumnos:Array<Alumno>)=> {
@@ -36,7 +39,7 @@ export class AlumnoComponent  implements OnInit {
 
   loading!:HTMLIonLoadingElement;//operador ! evito inicializarlo en el constructor
 
-  constructor(public alumnoService:AlumnoService, private toastController: ToastController, private loadingCtrl: LoadingController) { }
+  constructor(private platform:Platform, private router:Router, public alumnoService:AlumnoService, private toastController: ToastController, private loadingCtrl: LoadingController) { }
 
   
   async mostrarCargando ()
@@ -84,6 +87,26 @@ export class AlumnoComponent  implements OnInit {
 
     await toast.present();
     console.log("presentToast3()");
+  }
+
+  ionViewDidEnter()
+  {
+    //me suscribo al botón hacia atrás físico
+    console.log('ionViewDidEnter');
+    this.suscriptor_hacia_atras = this.platform.backButton.subscribe(() => {
+      //console.log("TOCADO EL BOTÓN HACIA ATRÁS");
+      //alert("BOTON HACIA ATRÁS TOCADO " + window.location.href);
+      this.router.navigateByUrl('/home');
+      
+    });
+  }
+
+  ionViewWillLeave ()
+  {
+    //me desuscribo al botón hacia atrás físico
+    console.log('ionViewWillLeave');
+    alert("SALIENDO DEL COMPONENTE");
+    this.suscriptor_hacia_atras.unsubscribe();
   }
 
 }
