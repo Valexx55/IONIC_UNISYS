@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { AlumnoComponent } from './components/alumno/alumno.component';
 import { DniComponent } from './components/dni/dni.component';
 import { GpsComponent } from './components/gps/gps.component';
+import { PadreTextoComponent } from './components/padre-texto/padre-texto.component';
 import { AccesoDniGuard } from './guards/acceso-dni.guard';
 import { GpsGuard } from './guards/gps.guard';
 
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'alumno',//"url"
     component: AlumnoComponent
+  },
+  {
+    path: 'com',//"url"
+    component: PadreTextoComponent
   },
   {
     path: 'gps',//"url"
